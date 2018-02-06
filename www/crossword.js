@@ -1,5 +1,5 @@
 
-var words = [
+let words = [
   {
     "clue": "Egyptisk geometri",
     "word": "pyramid",
@@ -62,7 +62,7 @@ var words = [
  * https://github.com/WeeHorse
  */
 
-$(init);
+$(board);
 
 $(document).on('submit', '#board', function(e){
   e.preventDefault();
@@ -72,18 +72,18 @@ $(document).on('submit', '#board', function(e){
 
 
 
-var bw = 9,
-    bh = 9,
+let boardWidth = 9,
+    boardHeight = 9,
     wordPoints = 0;
 
-function init(){
+function board(){
   // make board
-  var html = ['<table>'];
-  for(var x = 0; x<=bw; x++){
-  // for(var x = 1; x<=bw; x++){
+  let html = ['<table>'];
+  for(let x = 0; x<=boardWidth; x++){
+  // for(let x = 1; x<=boardWidth; x++){
     html.push('<tr>');
-    for(var y = 0; y<=bh; y++){
-      var id = 'x' + x + 'y' + y;
+    for(let y = 0; y<=boardHeight; y++){
+      let id = 'x' + x + 'y' + y;
       if(x == 0 && y == 0){
         html.push('<th></th>');
       }else if(x == 0){
@@ -101,8 +101,8 @@ function init(){
   html.unshift('<label for="correct">Visa facit</label><input type="checkbox" id="correct"/>');
   $('#board').html(html.join(''));
   // print clues
-  var html = [], direction, start, word;
-  for(var i = 0; i < words.length; i++){
+  let html = [], direction, start, word;
+  for(let i = 0; i < words.length; i++){
     word = words[i];
     if(word.start[0] == word.end[0]){
       direction = 'Lodrät';
@@ -117,15 +117,15 @@ function init(){
 }
 
 
-var test = function(){
-  for(var i = 0; i < words.length; i++){
+let test = function(){
+  for(let i = 0; i < words.length; i++){
     test2(words[i]);
   }
 }
 
 
-var test2 = function(word){
-  var x, y, letter, testLetter, testWord = '', id, matchJqEls = [];
+let test2 = function(word){
+  let x, y, letter, testLetter, testWord = '', id, matchJqEls = [];
   if(word.start[0] == word.end[0]){
     // LODRÄT:
     y = word.start[0];
@@ -143,7 +143,7 @@ var test2 = function(word){
         if(testWord && testWord == word.word){
           wordPoints++;
           console.log('word',word.word,'complete match');
-          for(var j = 0; j < matchJqEls.length; j++){
+          for(let j = 0; j < matchJqEls.length; j++){
             $(matchJqEls[j]).attr('disabled','disabled');
           }
         }
@@ -166,7 +166,7 @@ var test2 = function(word){
         if(testWord && testWord == word.word){
           wordPoints++;
           console.log('word',word.word,'complete match');
-          for(var j = 0; j < matchJqEls.length; j++){
+          for(let j = 0; j < matchJqEls.length; j++){
             $(matchJqEls[j]).attr('disabled','disabled');
           }
         }
