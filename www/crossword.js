@@ -105,8 +105,8 @@ function board(){
 
   // print clues
 function clues(){
-  var html = [], direction, start, word;
-  for(var i = 0; i < words.length; i++){
+  let html = [], direction, start, word;
+  for(let i = 0; i < words.length; i++){
     word = words[i];
     if(word.start[0] == word.end[0]){
       direction = 'Lodrät';
@@ -120,14 +120,20 @@ function clues(){
   $('#clues').html('<p>' + html.join('</p><p>') + '</p>');
 }
 
-var test = function(){
+function test(){
   for(var i = 0; i < words.length; i++){
     test2(words[i]);
   }
 }
 
+// var test = function(){
+//   for(var i = 0; i < words.length; i++){
+//     test2(words[i]);
+//   }
+// }
 
-var test2 = function(word){
+
+function test2(word){
   var x, y, letter, testLetter, testWord = '', id, matchJqEls = [];
   if(word.start[0] == word.end[0]){
     // LODRÄT:
