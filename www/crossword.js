@@ -63,6 +63,7 @@ var words = [
  */
 
 $(board);
+$(clues);
 
 $(document).on('submit', '#board', function(e){
   e.preventDefault();
@@ -100,7 +101,10 @@ function board(){
   html.unshift('<input type="submit" id="submit" value="svara"/>');
   html.unshift('<label for="correct">Visa facit</label><input type="checkbox" id="correct"/>');
   $('#board').html(html.join(''));
+ } 
+
   // print clues
+function clues(){
   var html = [], direction, start, word;
   for(var i = 0; i < words.length; i++){
     word = words[i];
@@ -115,7 +119,6 @@ function board(){
   }
   $('#clues').html('<p>' + html.join('</p><p>') + '</p>');
 }
-
 
 var test = function(){
   for(var i = 0; i < words.length; i++){
